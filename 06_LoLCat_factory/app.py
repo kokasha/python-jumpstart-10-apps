@@ -1,14 +1,19 @@
 import os
 import cat_service
+import platform
+import subprocess
 
 
 def main():
     print_header('LoLCat Factory')
     folder = get_or_create_folder()
     print('Found and Created Folder {}'.format(folder))
+    get_os = platform.system()
+    print(get_os)
     # download cats
     download_cat(folder)
     # show cats
+    display_cats(folder)
 
 
 def print_header(app_name):
@@ -47,6 +52,9 @@ def download_cat(folder):
 
     print('Done.')
 
+
+def display_cats(folder):
+    subprocess.call(['open', folder])
 
 if __name__ == '__main__':
     main()
